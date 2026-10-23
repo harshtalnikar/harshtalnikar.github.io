@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Flex · Any workout, hands-free</title><meta name="description" content="Flex turns a workout screenshot or pasted text into a voice-guided timer. Android app by Harsh Talnikar, coming soon to Google Play.">
+<meta name="theme-color" content="#0E0E0E"><link rel="canonical" href="https://harshtalnikar.in/flex/">
+<meta property="og:title" content="Flex · Any workout, hands-free"><meta property="og:description" content="Flex turns a workout screenshot or pasted text into a voice-guided timer. Android app by Harsh Talnikar, coming soon to Google Play."><meta property="og:type" content="website"><meta property="og:url" content="https://harshtalnikar.in/flex/"><meta property="og:site_name" content="Harsh Talnikar"><meta property="og:image" content="https://harshtalnikar.in/assets/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Flex · Any workout, hands-free"><meta name="twitter:description" content="Flex turns a workout screenshot or pasted text into a voice-guided timer. Android app by Harsh Talnikar, coming soon to Google Play."><meta name="twitter:image" content="https://harshtalnikar.in/assets/og-image.png">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png"><link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="../assets/style.css"></head>
+<body data-page="flex">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="logo2b" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#17181A"/><g transform="translate(32 32) scale(.8) translate(-32 -32)"><path d="M49.09 18.61A23 23 0 1 1 32 11" fill="none" stroke="#EDE9E0" stroke-width="4.2" stroke-linecap="round"/><rect x="28.5" y="2.5" width="7" height="3.6" rx="1.6" fill="#EDE9E0"/><rect x="30.6" y="5.5" width="2.8" height="3.4" fill="#EDE9E0"/><g transform="translate(32 34) rotate(-42)"><g transform="scale(1.02)"><rect x="-11" y="-1.5" width="22" height="3" rx="1.5" fill="#EDE9E0"/><rect x="-9.6" y="-8.5" width="4.4" height="17" rx="2" fill="#EDE9E0"/><rect x="5.2" y="-8.5" width="4.4" height="17" rx="2" fill="#EDE9E0"/><rect x="-12.8" y="-5.5" width="3.6" height="11" rx="1.5" fill="#EDE9E0"/><rect x="9.2" y="-5.5" width="3.6" height="11" rx="1.5" fill="#EDE9E0"/></g></g><circle cx="32" cy="34" r="2.6" fill="#FF6A3D"/></g></symbol>
+<symbol id="chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../" data-link="home"><span>Harsh Talnikar</span></a>
+  <nav aria-label="Main"><ul class="seg">
+    <li><a href="../about/" data-nav="about">About</a></li>
+    <li><a href="../projects/" data-nav="projects">Projects</a></li>
+    <li><a href="../music/" data-nav="music">Music</a></li>
+    <li><a href="../flex/" data-nav="flex" aria-current="page">Flex</a></li>
+    <li><a href="#contact" data-scroll="contact">Contact</a></li>
+  </ul></nav>
+</div></header>
+<main>
+<section class="page" data-page="flex">
+  <div class="wrap p-hero">
+    <div>
+      <svg class="p-logo" role="img" aria-label="Flex logo"><use href="#logo2b"/></svg>
+      <p class="p-kicker">Android app</p>
+      <h1 class="p-h1">Any workout. <span>Hands-free.</span></h1>
+      <p class="p-lede">Got a plan from a friend, a trainer, or an AI chat? Drop in a screenshot or paste the text. Flex builds the timer and talks you through every set, rest and round.</p>
+      <div class="p-actions">
+        <span class="p-btn soon" id="play-btn"><span>Coming soon to Google Play</span></span>
+        <a class="p-btn line" href="#how" data-scroll="how"><span>How it works</span></a>
+      </div>
+    </div>
+    <div class="phones" aria-hidden="true">
+      <div class="phone"><div class="phone-in ps-timer">
+        <div class="ps-top"><span class="ps-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span class="ps-round">RD 2/3 — EX 5/5</span><span class="ps-vol"><svg width="19" height="19" viewBox="0 0 24 24" fill="#0E0E0E"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11" fill="none" stroke="#0E0E0E" stroke-width="2.4"/></svg></span></div>
+        <div class="ps-name">Plank</div><div class="ps-sub">HOLD — 40 SEC</div>
+        <div class="ps-num"><b id="count">3</b><span>SEC<br>LEFT</span></div>
+        <div class="ps-bar"><div class="ps-next"><em>NEXT</em><span>DUMBBELL BENCH PRESS</span><span style="flex:none">×10</span></div>
+          <div class="ps-ctrl"><div class="side"><svg width="26" height="26" viewBox="0 0 24 24" fill="#F2EEE3"><path d="M19 5l-10 7 10 7z"/><rect x="5" y="5" width="3" height="14"/></svg></div><div class="mid"><svg width="26" height="26" viewBox="0 0 24 24" fill="#FF4F1F"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>PAUSE</div><div class="side"><svg width="26" height="26" viewBox="0 0 24 24" fill="#F2EEE3"><path d="M5 5l10 7-10 7z"/><rect x="16" y="5" width="3" height="14"/></svg></div></div></div>
+        <div class="ps-home" style="background:#0E0E0E"><i></i></div>
+      </div></div>
+      <div class="phone"><div class="phone-in ps-list">
+        <div class="ps-title" style="padding-top:34px">Your<br>Work‑<br>outs</div>
+        <div class="ps-tabs"><span class="on">ALL</span><span>TIMED</span><span>REPS</span></div>
+        <div class="ps-rows">
+          <div class="ps-row hot"><div class="n">01</div><div class="t"><b>Upper Body Workout</b><small>5 EXERCISES / 3 ROUNDS</small></div><div class="go"><svg width="22" height="22" viewBox="0 0 24 24" fill="#0E0E0E"><path d="M7 4l13 8-13 8z"/></svg></div></div>
+          <div class="ps-row"><div class="n">02</div><div class="t"><b>30 min skipping</b><small>1 EXERCISE / 30:00</small></div><div class="go"><svg width="22" height="22" viewBox="0 0 24 24" fill="#0E0E0E"><path d="M7 4l13 8-13 8z"/></svg></div></div>
+          <div class="ps-row"><div class="n">03</div><div class="t"><b>Chest Workout</b><small>7 EXERCISES</small></div><div class="go"><svg width="22" height="22" viewBox="0 0 24 24" fill="#0E0E0E"><path d="M7 4l13 8-13 8z"/></svg></div></div>
+        </div>
+        <div class="ps-import"><span>IMPORT A WORKOUT</span><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M12 5v14M5 12h14"/></svg></i></div>
+        <div class="ps-tabbar"><span class="on">WORKOUTS</span><span>HISTORY</span><span>SETTINGS</span></div>
+        <div class="ps-home"><i></i></div>
+      </div></div>
+    </div>
+  </div>
+
+  <section class="p-sec" id="how"><div class="wrap">
+    <h2 class="p-h2">Plan to workout in seconds</h2>
+    <ol class="p-steps">
+      <li><div class="no">1</div><div class="tx"><h3>Import</h3><p>Upload a screenshot or paste a workout as text. Flex reads exercises, reps, sets, durations, rest and rounds.</p></div></li>
+      <li><div class="no">2</div><div class="tx"><h3>Check and tweak</h3><p>Review what it found and edit anything, or build a workout from scratch.</p></div></li>
+      <li><div class="no">3</div><div class="tx"><h3>Press start</h3><p>Spoken 3-2-1 countdowns, the next exercise announced during rest, and rep-based sets with a Done button.</p></div></li>
+    </ol>
+  </div></section>
+
+  <section class="p-sec"><div class="wrap">
+    <h2 class="p-h2">Features</h2>
+    <div class="p-feats">
+      <div><h3>Image &amp; text import</h3><p>AI-assisted extraction turns messy plans into a structured timer.</p></div>
+      <div><h3>Voice guidance</h3><p>Choose spoken, beep or silent countdowns. Keep your eyes off the screen.</p></div>
+      <div><h3>Timed and rep-based</h3><p>Planks on a clock, squats by the rep, with weight logging.</p></div>
+      <div><h3>Rounds &amp; rest</h3><p>Circuits repeat with their own rest between rounds.</p></div>
+      <div><h3>Free to use</h3><p>Ad-supported, with a one-time Remove Ads purchase.</p></div>
+      <div><h3>Build your own</h3><p>Create and edit workouts manually whenever you like.</p></div>
+    </div>
+  </div></section>
+
+  <section class="p-sec p-faq"><div class="wrap">
+    <h2 class="p-h2">FAQ</h2>
+    <details><summary>Is Flex free?</summary><p>Yes. It shows ads, and a one-time purchase removes them.</p></details>
+    <details><summary>Is there an iPhone version?</summary><p>Not yet. Android first; iOS may follow.</p></details>
+    <details><summary>How accurate is the import?</summary><p>Usually good, but AI can misread things. Always glance over the result before you start.</p></details>
+    <details><summary>Where do I send feedback?</summary><p>Write to <strong>harshtalnikar@gmail.com</strong>. I read every message.</p></details>
+    <details><summary>Privacy policy?</summary><p>Coming shortly on this page, before the public launch.</p></details>
+  </div></section>
+</section>
+</main>
+<footer id="contact"><div class="wrap foot">
+  <div class="contact">
+    <h2>Let's talk</h2>
+    <p>Feedback on Flex, internships, collaboration, or just saying hi. I read everything.</p>
+    <div class="email-row"><span class="email" id="email">harshtalnikar@gmail.com</span><button type="button" class="btn cream" id="copy">Copy email</button></div>
+    <div class="actions"><a class="btn line-dark" href="https://www.linkedin.com/in/htalnikar/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn line-dark" href="https://github.com/Skillboy127" target="_blank" rel="noopener">GitHub ↗</a></div>
+  </div>
+  <div class="fine"><span>© 2026 Harsh Talnikar</span><nav aria-label="Footer"><a href="../about/">About</a><a href="../projects/">Projects</a><a href="../music/">Music</a><a href="../flex/">Flex</a></nav></div>
+</div></footer>
+<script>
+(function(){
+
+  document.addEventListener('click',function(e){
+    var s=e.target.closest('[data-scroll]');
+    if(s){
+      e.preventDefault();
+      var t=document.getElementById(s.getAttribute('data-scroll'));
+      if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+      return;
+    }
+  });
+
+  /* projects filter */
+  var fb=document.querySelectorAll('[data-filter]');
+  fb.forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=b.getAttribute('data-filter');
+      fb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+      document.querySelectorAll('.proj').forEach(function(p){p.hidden=!(f==='all'||p.getAttribute('data-cat')===f);});
+    });
+  });
+
+  /* copy email */
+  var cb=document.getElementById('copy'), em=document.getElementById('email');
+  if(cb&&em){
+  function selectEmail(){var r=document.createRange();r.selectNodeContents(em);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}
+  cb.addEventListener('click',function(){
+    function ok(){cb.textContent='Copied';setTimeout(function(){cb.textContent='Copy email';},1600);}
+    try{ navigator.clipboard.writeText(em.textContent).then(ok,function(){selectEmail();cb.textContent='Selected';}); }
+    catch(err){ selectEmail(); cb.textContent='Selected'; }
+  });
+  }
+
+  /* poster timer: counts 3-2-1 on loop */
+  var c=document.getElementById('count');
+  if(c && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var n=3; setInterval(function(){ n=n<=1?3:n-1; c.textContent=n; },1000);
+  }
+})();
+</script>
+</body></html>

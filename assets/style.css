@@ -254,3 +254,9 @@ body[data-page="flex"] .btn.line-dark{border:2.5px solid var(--p-bg);color:var(-
 .p-btn.soon:active{transform:none}
 .nf{min-height:calc(100svh - 64px);display:flex;align-items:center;padding-block:48px}
 
+/* Flex survey block */
+.survey{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 40px;align-items:center}
+.survey>*{min-width:0}
+.survey p:not(.p-kicker){max-width:52ch;margin:0;font-weight:500}
+.survey .p-h2{margin-bottom:14px}
+@media (max-width:760px){.survey{grid-template-columns:minmax(0,1fr)}}

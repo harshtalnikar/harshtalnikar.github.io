@@ -37,39 +37,42 @@
 <div class="wrap policy">
 <p class="p-kicker">Flex for Android</p>
 <h1 class="p-h1">Privacy <span>policy</span></h1>
-<p class="upd">Effective 23 October 2026</p>
+<p class="upd">Effective 12 November 2026</p>
 <p>Flex is a workout timer app made by <strong>Harsh Talnikar</strong>, an individual developer based in India (&ldquo;I&rdquo;, &ldquo;me&rdquo;). This policy explains what data the app and its server handle. Questions: <a href="mailto:flexbyht@gmail.com">flexbyht@gmail.com</a>.</p>
-<p class="short"><strong>Short version:</strong> there are no accounts and no analytics. Your workouts live on your phone. The text or photo you import is sent to an AI service to read it, and is not saved on my server. A hashed device identifier is stored to count imports. Ads are shown by Google AdMob.</p>
+<p class="short"><strong>Short version:</strong> there are no accounts. Your workouts live on your phone. The text or photo you import is sent to an AI service (Google Gemini) to read it, and is not saved on my server. Your Android ID is sent to my server, which stores only a hash of it and some import counters until I delete them on request. Ads are shown by Google AdMob, which collects its own data. Expo&rsquo;s update service sees a random install ID.</p>
 
 <h2>1. Workouts you import</h2>
 <p>When you import a workout, the text you typed or the photo you chose is sent over HTTPS to my server (hosted on Render). The server forwards it to Google&rsquo;s Gemini API, which reads it and returns the exercises. My server holds the content in memory only for the length of the request and does not save it. Photos are compressed before sending. The Android photo picker may leave a copy in the app&rsquo;s temporary cache on your device.</p>
 <p>Google processes what it receives under its own terms for the Gemini API, which may allow it to retain or use the content in line with those terms. Please don&rsquo;t import photos or text containing personal or sensitive information.</p>
 
 <h2>2. Import limit and device identifier</h2>
-<p>To limit imports per month, the app reads your Android ID and sends it with import and usage requests. The server immediately converts it with a keyed cryptographic hash (HMAC-SHA256) and stores only the hash, the date of your first import in the current period, a count of successful imports, and any bonus imports you have earned (see section 3), in a Postgres database hosted by Neon in Singapore. The raw Android ID is not stored, and I can&rsquo;t reverse the hash back to your device. I also store a total daily import count that isn&rsquo;t linked to anyone. This data is kept for as long as the service runs.</p>
+<p>To limit imports per month, the app reads your Android ID and sends it to my server over HTTPS. It is sent whenever the app checks how many imports you have left (when the app opens, and when you open the library or import screen) and with every import and reward-video request, even if you never import. The server immediately converts it with a keyed cryptographic hash (HMAC-SHA256) and stores only the hash. My code never saves or logs the raw Android ID, but it does pass through my hosting provider&rsquo;s servers while the request is handled. It is needed for the import limit: without it, importing is unavailable.</p>
+<p>For each hash the server stores the time of your first import (your monthly periods are counted from it), which period you are in, how many imports you have made in it, any bonus imports you earned (see section 3) and how many reward videos you used. This is kept in a Postgres database hosted by Neon in Singapore. The Android ID normally stays the same when you reinstall the app, so the same record is found again afterwards; clearing the app&rsquo;s data does not reset it. I can&rsquo;t reverse the hash back to your device. I also store a total daily import count that isn&rsquo;t linked to anyone.</p>
+<p><strong>Retention:</strong> this record is not deleted automatically. It is kept indefinitely, until I delete it at your request (see section 8). Records of reward-video codes (section 3) are deleted after about 30 days, but that cleanup only runs when someone requests a reward video, so they can stay longer.</p>
 
 <h2>3. Ads and purchases</h2>
-<p>The free version shows ads from Google AdMob, including full-screen video ads. AdMob collects data such as your advertising ID, device information and IP address, under <a href="https://policies.google.com/privacy">Google&rsquo;s Privacy Policy</a>. Flex asks AdMob for non-personalized ads only. The ad SDK runs even if you bought Remove Ads, but ads are then not displayed.</p>
-<p>If you run out of imports, you can choose to watch a rewarded video ad for extra imports. To confirm that you watched the ad, Google&rsquo;s AdMob sends a signed confirmation message to my server containing a one-time code that the app received from my server. It does not contain your name, advertising ID or device ID.</p>
-<p>The optional Remove Ads purchase is processed by Google Play. I never see your payment details. The app stores only a yes/no flag on your device to remember the purchase.</p>
+<p>The free version shows ads from Google AdMob, including full-screen ads and optional rewarded video ads. The ad SDK runs on your phone and sends data to Google directly. According to Google, it collects your IP address (which can be used to estimate your general location), how you interact with the app and ads (such as app launches, taps and video views), performance and diagnostic information about the app and the SDK, and identifiers including your Android advertising ID and an app set ID. Google uses this for advertising, analytics and fraud prevention under <a href="https://policies.google.com/privacy">Google&rsquo;s Privacy Policy</a>, and encrypts it in transit. Flex asks AdMob for non-personalized ads only. The ad SDK also runs if you bought Remove Ads, but then only the optional rewarded videos remain.</p>
+<p>If you run out of imports, you can choose to watch a rewarded video ad for extra imports. To confirm that you watched it, the app first asks my server for a one-time code and passes that code to AdMob with the ad request. Afterwards Google&rsquo;s AdMob sends a signed confirmation message to my server containing the code, a transaction ID, the ad unit and a timestamp. It does not contain your name, advertising ID or Android ID. I store the code (linked to your hash) and the transaction ID.</p>
+<p>The optional Remove Ads purchase is processed by Google Play. I never see your payment details, and no purchase information is sent to my server. The app asks Google Play which purchases you own each time it starts, and stores only a yes/no flag on your device to remember it.</p>
 
 <h2>4. App updates</h2>
-<p>When the app starts, it checks Expo&rsquo;s update service (u.expo.dev) for updates. That service receives the app version, platform and update identifiers, and sees your IP address.</p>
+<p>When the app starts, it checks Expo&rsquo;s update service (u.expo.dev) for updates and downloads them from Expo&rsquo;s servers. With each check the app sends its app version, platform, update channel and a random install ID that the update library creates the first time the app runs. That ID is not linked to your Android ID or to any account, and it is removed when you uninstall the app or clear its data. Expo&rsquo;s service also sees your IP address.</p>
 
 <h2>5. Server logs</h2>
-<p>My hosting provider keeps standard request logs (such as time, request path, status and user agent), and can see IP addresses at its network edge. My own code logs only error messages and never the content you import, your device ID or your hash.</p>
+<p>My hosting provider keeps standard request logs (such as time, request path, status and user agent), and can see IP addresses at its network edge. My own code logs only error messages and technical details of failed requests, and never the content you import, your device ID or your hash.</p>
 
 <h2>6. Data that stays on your device</h2>
 <p>Your workouts, history, rep and weight logs, and settings are stored locally on your phone and are not sent to me. Depending on your phone&rsquo;s backup settings, Android may include app data in your device backup to your Google account.</p>
 
 <h2>7. What I don&rsquo;t do</h2>
-<ul><li>No accounts or sign-in.</li><li>No analytics or crash-reporting tools.</li><li>I don&rsquo;t sell your data or use it for advertising profiles.</li></ul>
+<ul><li>No accounts or sign-in.</li><li>No analytics or crash-reporting tools of my own (the ad SDK collects some usage and performance data, see section 3).</li><li>I don&rsquo;t sell your data or use it for advertising profiles.</li></ul>
 
 <h2>8. Your choices and deleting data</h2>
 <ul>
 <li><strong>On your device:</strong> delete any workout or history entry in the app. Clearing the app&rsquo;s storage or uninstalling removes all local data.</li>
-<li><strong>On my server:</strong> I can&rsquo;t tell which stored hash is yours, so I can&rsquo;t look up your record. If you have a privacy question or request, email me and I will do what I can.</li>
+<li><strong>On my server:</strong> there is no delete button in the app. To have your record deleted, email me at <a href="mailto:flexbyht@gmail.com">flexbyht@gmail.com</a>. Because I store only a hash, I can&rsquo;t find your record from your name or email address, so please include your phone&rsquo;s Android ID (a 16-character code that a device-info app, or the command <code>adb shell settings get secure android_id</code>, will show). I will compute its hash and delete the matching rows, including any reward-video records. I may keep the record until your current monthly period ends so that the import limit can&rsquo;t be bypassed, and I will tell you if that applies. Afterwards you will be treated as a new user.</li>
 <li><strong>Ads:</strong> you can reset or delete your advertising ID in your Android settings.</li>
+<li><strong>Other companies:</strong> data held by Google (Gemini and AdMob), Expo and my hosting provider under their own policies isn&rsquo;t something I can delete for you; see their privacy policies.</li>
 </ul>
 
 <h2>9. Where data is processed</h2>
